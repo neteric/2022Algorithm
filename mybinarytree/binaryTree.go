@@ -209,3 +209,22 @@ func kthSmallest(root *TreeNode, k int) int {
 	kthSmallestInOrderTraverse(root, k, &value)
 	return value
 }
+
+func inorderTraversal(root *TreeNode) []int {
+
+	var result []int
+	helpInorderTraversal(root, &result)
+
+	return result
+
+}
+
+func helpInorderTraversal(root *TreeNode, result *[]int) {
+	if root == nil {
+		return
+	}
+	helpInorderTraversal(root.Left, result)
+	*result = append(*result, root.Val)
+	helpInorderTraversal(root.Right, result)
+
+}

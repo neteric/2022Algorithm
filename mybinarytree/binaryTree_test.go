@@ -1,6 +1,7 @@
 package mybinarytree
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -9,7 +10,6 @@ func TestKthSmallest(t *testing.T) {
 	root := MakeTree(x)
 	kthSmallest(root, 3)
 }
-
 func TestTreeNode(t *testing.T) {
 	// preOrder := []int{3, 9, 20, 15, 7}
 	// inOrder := []int{9, 3, 15, 20, 7}
@@ -29,5 +29,12 @@ func TestTreeNode(t *testing.T) {
 	// LeftLeafNode(head)
 	convertBST(root)
 	inOderTraverse(root)
+
+}
+
+func TestInorderTraversal(*testing.T) {
+	var x = []int{1, 2, 3, null}
+	root := MakeTree(x)
+	fmt.Println(inorderTraversal(root))
 
 }
