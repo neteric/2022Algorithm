@@ -228,3 +228,23 @@ func helpInorderTraversal(root *TreeNode, result *[]int) {
 	helpInorderTraversal(root.Right, result)
 
 }
+
+//思路：
+// 1. 层序遍历两棵树，看结果是否相同
+// 2. 前序和中序遍历能确定一颗二叉树，对边两颗树的前序和中序遍历结果是否都相同
+// 3. 同时遍历两棵树，对比结果
+func isSameTree(p *TreeNode, q *TreeNode) bool {
+
+	if p == nil && q == nil {
+		return true
+	}
+
+	if p == nil || q == nil {
+		return false
+	}
+
+	if p.Val != q.Val {
+		return false
+	}
+	return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
+}

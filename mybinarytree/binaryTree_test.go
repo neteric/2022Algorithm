@@ -38,3 +38,11 @@ func TestInorderTraversal(*testing.T) {
 	fmt.Println(inorderTraversal(root))
 
 }
+
+func TestIsSameTree(*testing.T) {
+	var p = []int{1, 2, 1}
+	rootP := MakeTree(p)
+	var q = []int{1, 2, 1}
+	rootQ := MakeTree(q)
+	fmt.Println(isSameTree(rootP, rootQ))
+}
