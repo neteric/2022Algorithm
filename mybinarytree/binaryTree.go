@@ -297,3 +297,36 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
 	}
 	return hasPathSum(root.Left, targetSum-root.Val) || hasPathSum(root.Right, targetSum-root.Val)
 }
+
+func pathSum(root *TreeNode, targetSum int) [][]int {
+
+	var result [][]int
+	var one []int
+	helpPathSum(root, 0, targetSum, &result, one)
+	return result
+}
+
+func helpPathSum(root *TreeNode, sum int, targetSum int, result *[][]int, one []int) {
+
+	if root == nil {
+		return
+	}
+
+	one = append(one, root.Val)
+	sum += root.Val
+
+	// 除了考虑sum == targetSum,还需要考虑边界条件，必须是root到叶子节点的和才满足要求
+	if sum == targetSum && root.Left == nil && root.Right == nil {
+		// 找到一个
+		r := make([]int, len(one), len(one))
+		// golang slice为引用类型，在此需要深拷贝一下
+		copy(r, one)
+		*result = append(*result, r)
+	}
+
+	helpPathSum(root.Left, sum, targetSum, result, one)
+	helpPathSum(root.Right, sum, targetSum, result, one)
+	sum -= root.Val
+	one = one[:len(one)-1]
+
+}
