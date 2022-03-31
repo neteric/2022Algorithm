@@ -46,3 +46,10 @@ func TestIsSameTree(*testing.T) {
 	rootQ := MakeTree(q)
 	fmt.Println(isSameTree(rootP, rootQ))
 }
+
+func TestIsSymmetric(*testing.T) {
+	var ele = []int{1, 2, 2, null, 3, null, 3}
+	root := MakeTree(ele)
+	fmt.Println(isSymmetric(root))
+
+}

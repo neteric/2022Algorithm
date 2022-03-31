@@ -248,3 +248,23 @@ func isSameTree(p *TreeNode, q *TreeNode) bool {
 	}
 	return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
 }
+
+func isSymmetric(root *TreeNode) bool {
+
+	return helpIsSymmetric(root.Left, root.Right)
+
+}
+
+func helpIsSymmetric(l, r *TreeNode) bool {
+	if l == nil && r == nil {
+		return true
+	}
+	if l == nil || r == nil {
+		return false
+	}
+	if l.Val != r.Val {
+		return false
+	}
+	return helpIsSymmetric(l.Left, r.Right) && helpIsSymmetric(l.Right, r.Left)
+
+}
