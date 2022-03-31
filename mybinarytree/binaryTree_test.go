@@ -53,3 +53,9 @@ func TestIsSymmetric(*testing.T) {
 	fmt.Println(isSymmetric(root))
 
 }
+
+func TestMaxDepth2(*testing.T) {
+	var ele = []int{3, 9, 20, null, null, 15, 7}
+	root := MakeTree(ele)
+	fmt.Println(maxDepth2(root))
+}

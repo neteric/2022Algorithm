@@ -268,3 +268,18 @@ func helpIsSymmetric(l, r *TreeNode) bool {
 	return helpIsSymmetric(l.Left, r.Right) && helpIsSymmetric(l.Right, r.Left)
 
 }
+
+func maxDepth2(root *TreeNode) int {
+
+	if root == nil {
+		return 0
+	}
+
+	leftMax := maxDepth2(root.Left) + 1
+	rightMax := maxDepth2(root.Right) + 1
+
+	if leftMax > rightMax {
+		return leftMax
+	}
+	return rightMax
+}
