@@ -59,3 +59,9 @@ func TestMaxDepth2(*testing.T) {
 	root := MakeTree(ele)
 	fmt.Println(maxDepth2(root))
 }
+
+func TestHasPathSum(*testing.T) {
+	var ele = []int{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(hasPathSum(root, 22))
+}
