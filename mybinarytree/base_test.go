@@ -10,3 +10,8 @@ func TestMakeTree(t *testing.T) {
 	inOderTraverse(root)
 
 }
+func TestMakeTreeByLevel(*testing.T) {
+	ele := []int{2, null, 3, null, 4, null, 5, null, 6}
+	root := MakeTreeByLevelList(ele)
+	inOderTraverse(root)
+}
