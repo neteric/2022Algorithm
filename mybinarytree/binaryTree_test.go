@@ -77,3 +77,9 @@ func TestSumOfLeftLeaves(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(sumOfLeftLeaves(root))
 }
+
+func TestBinaryTreePaths(*testing.T) {
+	var ele = []int{1, 2, 3, null, 5}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(binaryTreePaths(root))
+}

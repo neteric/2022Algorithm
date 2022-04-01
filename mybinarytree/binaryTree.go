@@ -1,6 +1,9 @@
 package mybinarytree
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var res = 0
 var depth = 0
@@ -346,5 +349,33 @@ func helpSumOfLeftLeaves(root *TreeNode, option bool) int {
 	}
 
 	return helpSumOfLeftLeaves(root.Left, true) + helpSumOfLeftLeaves(root.Right, false)
+
+}
+
+func binaryTreePaths(root *TreeNode) []string {
+
+	var result []string
+	helpBinaryTreePaths(root, &result, "")
+	return result
+}
+
+func helpBinaryTreePaths(root *TreeNode, result *[]string, one string) {
+
+	if root == nil {
+		return
+	}
+	one += fmt.Sprint(root.Val)
+	if root.Left == nil && root.Right == nil {
+		// 其中一个路径
+		*result = append(*result, one)
+	}
+	one += "->"
+
+	helpBinaryTreePaths(root.Left, result, one)
+	helpBinaryTreePaths(root.Right, result, one)
+
+	out := strings.Split(one, "->")
+	out = out[:len(out)-1]
+	strings.Join(out, "->")
 
 }
