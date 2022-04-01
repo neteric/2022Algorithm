@@ -91,13 +91,41 @@ func inOderTraverse(head *TreeNode) {
 	inOderTraverse(head.Right)
 }
 
-func postOderTraverse(head *TreeNode) {
-	if head == nil {
+func postorderTraversal(root *TreeNode) []int {
+
+	var result []int
+
+	helpPostOderTraverse(root, &result)
+
+	return result
+
+}
+func helpPostOderTraverse(root *TreeNode, result *[]int) {
+	if root == nil {
 		return
 	}
-	postOderTraverse(head.Left)
-	postOderTraverse(head.Right)
-	fmt.Println(head.Val)
+
+	helpPostOderTraverse(root.Left, result)
+	helpPostOderTraverse(root.Right, result)
+	*result = append(*result, root.Val)
+}
+
+func preorderTraversal(root *TreeNode) []int {
+
+	var result []int
+
+	helpPrePostOderTraverse(root, &result)
+
+	return result
+
+}
+func helpPrePostOderTraverse(root *TreeNode, result *[]int) {
+	if root == nil {
+		return
+	}
+	*result = append(*result, root.Val)
+	helpPrePostOderTraverse(root.Left, result)
+	helpPrePostOderTraverse(root.Right, result)
 
 }
 
