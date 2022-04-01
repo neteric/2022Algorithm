@@ -330,3 +330,21 @@ func helpPathSum(root *TreeNode, sum int, targetSum int, result *[][]int, one []
 	one = one[:len(one)-1]
 
 }
+
+func sumOfLeftLeaves(root *TreeNode) int {
+
+	return helpSumOfLeftLeaves(root, false)
+}
+
+func helpSumOfLeftLeaves(root *TreeNode, option bool) int {
+	if root == nil {
+		return 0
+	}
+
+	if root.Left == nil && root.Right == nil && option {
+		return root.Val
+	}
+
+	return helpSumOfLeftLeaves(root.Left, true) + helpSumOfLeftLeaves(root.Right, false)
+
+}

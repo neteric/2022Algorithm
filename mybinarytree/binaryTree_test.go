@@ -71,3 +71,9 @@ func TestPathSum(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(pathSum(root, 22))
 }
+
+func TestSumOfLeftLeaves(*testing.T) {
+	var ele = []int{3, 9, 20, null, null, 15, 7}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(sumOfLeftLeaves(root))
+}
