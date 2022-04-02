@@ -89,3 +89,9 @@ func TestLevelOrder(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(levelOrder(root))
 }
+
+func TestRightSideView(*testing.T) {
+	var ele = []int{}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(rightSideView(root))
+}

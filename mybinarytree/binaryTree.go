@@ -440,3 +440,33 @@ func levelOrder(root *TreeNode) [][]int {
 
 	return result
 }
+
+func rightSideView(root *TreeNode) []int {
+	var result []int
+
+	if root == nil {
+		return result
+	}
+	var q []*TreeNode
+	q = append(q, root)
+
+	for len(q) > 0 {
+		sizeq := len(q)
+		for j := 0; j < sizeq; j++ {
+			out := q[0]
+			q[0] = nil
+			q = q[1:]
+			if j == sizeq-1 {
+				result = append(result, out.Val)
+			}
+			if out.Left != nil {
+				q = append(q, out.Left)
+			}
+			if out.Right != nil {
+				q = append(q, out.Right)
+			}
+		}
+	}
+
+	return result
+}
