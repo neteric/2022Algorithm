@@ -83,3 +83,9 @@ func TestBinaryTreePaths(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(binaryTreePaths(root))
 }
+
+func TestLevelOrder(*testing.T) {
+	var ele = []int{3, 9, 20, null, null, 15, 7}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(levelOrder(root))
+}

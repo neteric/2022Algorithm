@@ -407,3 +407,36 @@ func helpBinaryTreePaths(root *TreeNode, result *[]string, one string) {
 	strings.Join(out, "->")
 
 }
+
+func levelOrder(root *TreeNode) [][]int {
+
+	var result [][]int
+
+	if root == nil {
+		return result
+	}
+
+	var q []*TreeNode
+	q = append(q, root)
+
+	for len(q) > 0 {
+		sizeq := len(q)
+		var level = make([]int, 0, 0)
+		for j := 0; j < sizeq; j++ {
+			out := q[0]
+			q[0] = nil
+			q = q[1:]
+			level = append(level, out.Val)
+			if out.Left != nil {
+				q = append(q, out.Left)
+			}
+			if out.Right != nil {
+				q = append(q, out.Right)
+			}
+		}
+		result = append(result, level)
+
+	}
+
+	return result
+}
