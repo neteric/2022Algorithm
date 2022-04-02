@@ -95,3 +95,9 @@ func TestRightSideView(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(rightSideView(root))
 }
+
+func TestSumTree(*testing.T) {
+	var ele = []int{21, 7, 14, 1, 1, 2, 2, 3, 3}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(findTilt(root))
+}
