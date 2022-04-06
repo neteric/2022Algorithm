@@ -499,3 +499,50 @@ func IntAbs(in int) int {
 	}
 	return in
 }
+
+// 此思路为前序遍历，但无法满足题目要求（左子树为空时保留括号，右子树为空时不保留括号）
+func tree2str(root *TreeNode) string {
+
+	var s string
+	helpTree2str(root, &s)
+	return strings.TrimPrefix(strings.TrimSuffix(s, ")"), "(")
+
+}
+
+func helpTree2str(root *TreeNode, s *string) {
+
+	if root == nil {
+		return
+	}
+	*s += "("
+	*s += fmt.Sprint(root.Val)
+
+	helpTree2str(root.Left, s)
+	helpTree2str(root.Right, s)
+
+	*s += ")"
+
+}
+
+func helpTree2str2(root *TreeNode) string {
+
+	if root == nil {
+		return ""
+	}
+
+	if (root.Left == nil) && (root.Right == nil) {
+		return fmt.Sprint(root.Val)
+	}
+	leftStr := helpTree2str2(root.Left)
+	rightStr := helpTree2str2(root.Right)
+	// 后序遍历代码位置
+	// 根据左右子树字符串组装出前序遍历的顺序
+	// 按题目要求处理 root 只有一边有子树的情况
+	if root.Left != nil && root.Right == nil {
+		return fmt.Sprint(root.Val) + "(" + leftStr + ")"
+	}
+	if root.Left == nil && root.Right != nil {
+		return fmt.Sprint(root.Val) + "()" + "(" + rightStr + ")"
+	}
+	return fmt.Sprint(root.Val) + "(" + leftStr + ")" + "(" + rightStr + ")"
+}

@@ -101,3 +101,9 @@ func TestSumTree(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(findTilt(root))
 }
+
+func TestTree2str(*testing.T) {
+	var ele = []int{1, 2, 3, null, 4}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println("s:", tree2str(root))
+}
