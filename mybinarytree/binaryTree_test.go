@@ -107,3 +107,13 @@ func TestTree2str(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println("s:", tree2str(root))
 }
+
+func TestMergeTrees(*testing.T) {
+	var ele1 = []int{1, 3, 2, 5}
+	root1 := MakeTreeByLevelList(ele1)
+
+	var ele2 = []int{2, 1, 3, null, 4, null, 7}
+	root2 := MakeTreeByLevelList(ele2)
+
+	levelTraverse(mergeTrees(root1, root2))
+}
