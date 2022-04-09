@@ -109,10 +109,10 @@ func TestTree2str(*testing.T) {
 }
 
 func TestMergeTrees(*testing.T) {
-	var ele1 = []int{1, 3, 2, 5}
+	var ele1 = []int{1}
 	root1 := MakeTreeByLevelList(ele1)
 
-	var ele2 = []int{2, 1, 3, null, 4, null, 7}
+	var ele2 = []int{1, 2}
 	root2 := MakeTreeByLevelList(ele2)
 
 	levelTraverse(mergeTrees(root1, root2))

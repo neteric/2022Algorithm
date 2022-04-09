@@ -547,7 +547,8 @@ func helpTree2str2(root *TreeNode) string {
 	return fmt.Sprint(root.Val) + "(" + leftStr + ")" + "(" + rightStr + ")"
 }
 
-func mergeTrees(root1 *TreeNode, root2 *TreeNode) (root *TreeNode) {
+// number:617
+func mergeTrees(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 
 	if root1 == nil && root2 == nil {
 		return nil
@@ -559,17 +560,15 @@ func mergeTrees(root1 *TreeNode, root2 *TreeNode) (root *TreeNode) {
 	if root1 == nil && root2 != nil {
 		return root2
 	}
-	if root1 != nil && root2 != nil {
-		t := new(TreeNode)
-		t.Val = root1.Val + root2.Val
-		return t
-	}
+
 	leftTree := mergeTrees(root1.Left, root2.Left)
 	rightTree := mergeTrees(root1.Right, root2.Right)
 
-	root.Left = leftTree
-	root.Right = rightTree
+	t := new(TreeNode)
+	t.Val = root1.Val + root2.Val
+	t.Left = leftTree
+	t.Right = rightTree
 
-	return root
+	return t
 
 }
