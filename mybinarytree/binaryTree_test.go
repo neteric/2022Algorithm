@@ -117,3 +117,9 @@ func TestMergeTrees(*testing.T) {
 
 	levelTraverse(mergeTrees(root1, root2))
 }
+
+func TestIncreasingBST(*testing.T) {
+	var ele = []int{5, 3, 6, 2, 4, null, 8, 1, null, null, null, 7, 9}
+	root := MakeTreeByLevelList(ele)
+	levelTraverse(increasingBST(root))
+}

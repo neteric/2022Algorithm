@@ -572,3 +572,28 @@ func mergeTrees(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 	return t
 
 }
+
+// number:897
+func increasingBST(root *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+	// if root.Left == nil && root.Right == nil {
+	// 	return root
+	// }
+	l := increasingBST(root.Left)
+	root.Left = nil
+	r := increasingBST(root.Right)
+	root.Right = r
+	if l == nil {
+		return root
+	}
+	x := l
+	for x.Right != nil {
+		x = x.Right
+	}
+	x.Right = root
+
+	return l
+
+}
