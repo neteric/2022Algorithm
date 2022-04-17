@@ -597,3 +597,45 @@ func increasingBST(root *TreeNode) *TreeNode {
 	return l
 
 }
+
+// number: 103
+func zigzagLevelOrder(root *TreeNode) [][]int {
+
+	var result [][]int
+	if root == nil {
+		return result
+	}
+	var q []*TreeNode
+	q = append(q, root)
+	var level bool
+	for len(q) > 0 {
+		var sizeq = len(q)
+		var levelValue = make([]int, 0, 0)
+		for i := 0; i < sizeq; i++ {
+
+			out := q[0]
+			q = q[1:]
+			levelValue = append(levelValue, out.Val)
+			if out.Left != nil {
+				q = append(q, out.Left)
+			}
+			if out.Right != nil {
+				q = append(q, out.Right)
+			}
+		}
+		if level {
+			for i, j := 0, len(levelValue)-1; i < j; i, j = i+1, j-1 {
+				levelValue[i], levelValue[j] = levelValue[j], levelValue[i]
+			}
+			level = false
+		} else {
+			level = true
+
+		}
+		result = append(result, levelValue)
+
+	}
+
+	return result
+
+}

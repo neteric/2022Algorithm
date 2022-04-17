@@ -123,3 +123,9 @@ func TestIncreasingBST(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	levelTraverse(increasingBST(root))
 }
+
+func TestZigzagLevelOrder(*testing.T) {
+	var ele = []int{3, 9, 20, null, null, 15, 7}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(zigzagLevelOrder(root))
+}
