@@ -639,3 +639,29 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 	return result
 
 }
+
+// number: 108
+func sortedArrayToBST(nums []int) *TreeNode {
+
+	if len(nums) == 0 {
+		return nil
+	}
+	if len(nums) == 1 {
+		root := new(TreeNode)
+		root.Val = nums[0]
+		return root
+	}
+
+	root := new(TreeNode)
+	mid := len(nums) / 2
+	root.Val = nums[mid]
+	left := nums[:mid]
+	right := nums[mid+1:]
+
+	leftTree := sortedArrayToBST(left)
+	rightTree := sortedArrayToBST(right)
+	root.Left = leftTree
+	root.Right = rightTree
+
+	return root
+}
