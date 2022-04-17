@@ -665,3 +665,35 @@ func sortedArrayToBST(nums []int) *TreeNode {
 
 	return root
 }
+
+var depth1 = 0
+
+// number:110
+func isBalanced(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	var r bool = true
+	max(root, &r)
+	return r
+
+}
+
+func max(root *TreeNode, r *bool) int {
+
+	if root == nil {
+		return 0
+	}
+
+	left := max(root.Left, r) + 1
+	right := max(root.Right, r) + 1
+
+	if IntAbs(left-right) > 1 {
+		*r = false
+	}
+
+	if left > right {
+		return left
+	}
+	return right
+}

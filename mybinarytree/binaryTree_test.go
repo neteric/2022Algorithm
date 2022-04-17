@@ -134,3 +134,9 @@ func TestSortedArrayToBST(*testing.T) {
 	var ele = []int{-10, -3, 0, 5, 9}
 	levelTraverse(sortedArrayToBST(ele))
 }
+
+func TestIsBalanced(*testing.T) {
+	var ele = []int{1, 2, 2, 3, 3, null, null, 4, 4}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(isBalanced(root))
+}
