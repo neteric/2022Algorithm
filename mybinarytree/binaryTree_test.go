@@ -140,3 +140,9 @@ func TestIsBalanced(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(isBalanced(root))
 }
+
+func TestDiameterOfBinaryTree(*testing.T) {
+	var ele = []int{1, 2, 3, 4, 5}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(diameterOfBinaryTree(root))
+}

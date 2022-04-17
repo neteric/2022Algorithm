@@ -666,8 +666,6 @@ func sortedArrayToBST(nums []int) *TreeNode {
 	return root
 }
 
-var depth1 = 0
-
 // number:110
 func isBalanced(root *TreeNode) bool {
 	if root == nil {
@@ -696,4 +694,37 @@ func max(root *TreeNode, r *bool) int {
 		return left
 	}
 	return right
+}
+
+// number:543
+func diameterOfBinaryTree(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	var max int
+	helpDiameterOfBinaryTree(root, &max)
+	fmt.Println("x", max)
+	return max - 2
+
+}
+
+func helpDiameterOfBinaryTree(root *TreeNode, max *int) int {
+	if root == nil {
+		return 0
+	}
+	left := helpDiameterOfBinaryTree(root.Left, max) + 1
+	right := helpDiameterOfBinaryTree(root.Right, max) + 1
+	// fmt.Println("left", left)
+	// fmt.Println("right", right)
+	// fmt.Println("z", root.Val)
+	if left+right > *max {
+		*max = left + right
+	}
+
+	if left > right {
+		return left
+	}
+	return right
+
 }
