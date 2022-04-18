@@ -146,3 +146,9 @@ func TestDiameterOfBinaryTree(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(diameterOfBinaryTree(root))
 }
+
+func TestMinDepth(*testing.T) {
+	var ele = []int{2, null, 3, null, 4, null, 5, null, 6}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(minDepth(root))
+}

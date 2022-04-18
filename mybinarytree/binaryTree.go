@@ -704,7 +704,7 @@ func diameterOfBinaryTree(root *TreeNode) int {
 
 	var max int
 	helpDiameterOfBinaryTree(root, &max)
-	fmt.Println("x", max)
+	// fmt.Println("x", max)
 	return max - 2
 
 }
@@ -726,5 +726,51 @@ func helpDiameterOfBinaryTree(root *TreeNode, max *int) int {
 		return left
 	}
 	return right
+
+}
+
+// number: 111
+func minDepth(root *TreeNode) int {
+
+	if root == nil {
+		return 0
+	}
+	// 方法一，时间复杂度较高
+	// left := minDepth(root.Left) + 1
+	// right := minDepth(root.Right) + 1
+
+	// if root.Right == nil {
+	// 	return left
+	// } else if root.Left == nil {
+	// 	return right
+	// } else if left > right {
+	// 	return right
+	// }
+	// return left
+
+	var q []*TreeNode
+
+	q = append(q, root)
+	var level = 0
+	for len(q) > 0 {
+		level++
+		sizeq := len(q)
+		for i := 0; i < sizeq; i++ {
+			out := q[0]
+			q = q[1:]
+			// fmt.Println(out.Val)
+			if out.Left == nil && out.Right == nil {
+				return level
+			}
+			if out.Left != nil {
+				q = append(q, out.Left)
+			}
+			if out.Right != nil {
+				q = append(q, out.Right)
+			}
+
+		}
+	}
+	return level
 
 }
