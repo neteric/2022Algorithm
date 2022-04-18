@@ -152,3 +152,10 @@ func TestMinDepth(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(minDepth(root))
 }
+
+func TestMaxPathSum(*testing.T) {
+	var ele = []int{9, 6, -3, null, null, -6, 2, null, null, 2, null, -6, -6, -6}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(maxPathSum(root))
+
+}
