@@ -780,3 +780,39 @@ func mirrorTree(root *TreeNode) *TreeNode {
 	return root
 
 }
+
+// number: 剑指 Offer 07. 重建二叉树, 也是第二次做构建二叉树
+func buildTree1(preorder []int, inorder []int) *TreeNode {
+
+	if len(preorder) == 0 || len(inorder) == 0 {
+		return nil
+	}
+	// root
+	rootValue := preorder[0]
+	root := new(TreeNode)
+	root.Val = rootValue
+	preorder = preorder[1:]
+
+	var midIndex int
+	for i, v := range inorder {
+		if v == rootValue {
+			midIndex = i
+			break
+		}
+	}
+
+	inOrderLeft := inorder[:midIndex]
+	inOrderRight := inorder[midIndex+1:]
+
+	mid := len(inOrderLeft)
+	preOrderleft := preorder[:mid]
+	preOrderright := preorder[mid:]
+
+	leftTree := buildTree1(preOrderleft, inOrderLeft)
+	rightTree := buildTree1(preOrderright, inOrderRight)
+
+	root.Left = leftTree
+	root.Right = rightTree
+
+	return root
+}

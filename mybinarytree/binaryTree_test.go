@@ -153,3 +153,8 @@ func TestMirrorTree(*testing.T) {
 	levelTraverse(mirrorTree(root))
 
 }
+
+func TestBuildTree1(*testing.T) {
+	tree := buildTree1([]int{1, 2, 4, 5, 3, 6, 7}, []int{4, 2, 5, 1, 6, 3, 7})
+	levelTraverse(tree)
+}
