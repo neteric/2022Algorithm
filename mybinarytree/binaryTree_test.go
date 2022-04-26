@@ -146,3 +146,10 @@ func TestDiameterOfBinaryTree(*testing.T) {
 	root := MakeTreeByLevelList(ele)
 	fmt.Println(diameterOfBinaryTree(root))
 }
+
+func TestMirrorTree(*testing.T) {
+	var ele = []int{1, 2, 3, 4, null, null, 7}
+	root := MakeTreeByLevelList(ele)
+	levelTraverse(mirrorTree(root))
+
+}

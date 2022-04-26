@@ -728,3 +728,55 @@ func helpDiameterOfBinaryTree(root *TreeNode, max *int) int {
 	return right
 
 }
+
+// number: 剑指 Offer 27
+// 本题如果交换节点的value，就是误入歧途了
+// func mirrorTree(root *TreeNode) *TreeNode {
+// 	if root == nil {
+// 		return nil
+// 	}
+
+// 	if root.Left == nil && root.Right == nil {
+// 		return root
+// 	}
+// 	helpMirrorTree(root.Left, root.Right)
+// 	return root
+
+// }
+
+// func helpMirrorTree(l, r *TreeNode) {
+
+// 	if l == nil && r == nil {
+// 		return
+// 	}
+
+// 	if l == nil && r != nil {
+// 		l := new(TreeNode)
+// 		l.Val = r.Val
+// 		r = nil
+// 	} else if r == nil && l != nil {
+// 		r := new(TreeNode)
+// 		r.Val = l.Val
+// 		l = nil
+// 	} else {
+// 		l.Val, r.Val = r.Val, l.Val
+// 	}
+
+// 	helpMirrorTree(l.Left, r.Right)
+// 	helpMirrorTree(l.Right, r.Left)
+
+// }
+
+func mirrorTree(root *TreeNode) *TreeNode {
+
+	if root == nil {
+		return nil
+	}
+
+	root.Left, root.Right = root.Right, root.Left
+	mirrorTree(root.Left)
+	mirrorTree(root.Right)
+
+	return root
+
+}
