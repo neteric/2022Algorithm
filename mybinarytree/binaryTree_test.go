@@ -158,3 +158,15 @@ func TestBuildTree1(*testing.T) {
 	tree := buildTree1([]int{1, 2, 4, 5, 3, 6, 7}, []int{4, 2, 5, 1, 6, 3, 7})
 	levelTraverse(tree)
 }
+func TestMinDepth(*testing.T) {
+	var ele = []int{2, null, 3, null, 4, null, 5, null, 6}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(minDepth(root))
+}
+
+func TestMaxPathSum(*testing.T) {
+	var ele = []int{9, 6, -3, null, null, -6, 2, null, null, 2, null, -6, -6, -6}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(maxPathSum(root))
+
+}

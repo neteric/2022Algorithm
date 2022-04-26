@@ -3,6 +3,7 @@ package mybinarytree
 //
 import (
 	"fmt"
+	"math"
 	"strings"
 )
 
@@ -704,7 +705,7 @@ func diameterOfBinaryTree(root *TreeNode) int {
 
 	var max int
 	helpDiameterOfBinaryTree(root, &max)
-	fmt.Println("x", max)
+	// fmt.Println("x", max)
 	return max - 2
 
 }
@@ -815,4 +816,102 @@ func buildTree1(preorder []int, inorder []int) *TreeNode {
 	root.Right = rightTree
 
 	return root
+}
+
+// number: 111
+func minDepth(root *TreeNode) int {
+
+	if root == nil {
+		return 0
+	}
+	// 方法一，时间复杂度较高
+	// left := minDepth(root.Left) + 1
+	// right := minDepth(root.Right) + 1
+
+	// if root.Right == nil {
+	// 	return left
+	// } else if root.Left == nil {
+	// 	return right
+	// } else if left > right {
+	// 	return right
+	// }
+	// return left
+
+	var q []*TreeNode
+
+	q = append(q, root)
+	var level = 0
+	for len(q) > 0 {
+		level++
+		sizeq := len(q)
+		for i := 0; i < sizeq; i++ {
+			out := q[0]
+			q = q[1:]
+			// fmt.Println(out.Val)
+			if out.Left == nil && out.Right == nil {
+				return level
+			}
+			if out.Left != nil {
+				q = append(q, out.Left)
+			}
+			if out.Right != nil {
+				q = append(q, out.Right)
+			}
+
+		}
+	}
+	return level
+
+}
+
+// number: 124
+// 路径 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。
+// 路径和 是路径中各节点值的总和。
+// 给你一个二叉树的根节点 root ，返回其 最大路径和 。
+
+func maxPathSum(root *TreeNode) int {
+
+	if root == nil {
+		return 0
+	}
+	// 注意点1: 给maxPathValue赋初值，否则初值为0，无法处理负数最大值
+	var maxPathValue int = root.Val
+	helpMaxPathSum(root, &maxPathValue)
+	return maxPathValue
+}
+
+func helpMaxPathSum(root *TreeNode, maxPathValue *int) int {
+	if root == nil {
+		return 0
+	}
+
+	// 注意点2： 一般不用这种退出条件，这种退出条件处理只有根节点的树时，无法走到下面的逻辑
+	// if root.Left == nil && root.Right == nil {
+	// 	return root.Val
+	// }
+
+	left := int(math.Max(0, float64(helpMaxPathSum(root.Left, maxPathValue))))
+	right := int(math.Max(0, float64(helpMaxPathSum(root.Right, maxPathValue))))
+
+	// var tempMax int
+	// if left > 0 {
+	// 	tempMax += left
+	// }
+	// if right > 0 {
+	// 	tempMax += right
+	// }
+	// tempMax += root.Val + left + right
+	if root.Val+left+right > *maxPathValue {
+		*maxPathValue = root.Val + left + right
+	}
+
+	// if left > right && left > 0 {
+	// 	return left + root.Val
+	// }
+	// if right > left && right > 0 {
+	// 	return right + root.Val
+	// }
+
+	return int(math.Max(float64(left), float64(right))) + root.Val
+
 }
