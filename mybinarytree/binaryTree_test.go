@@ -170,3 +170,18 @@ func TestMaxPathSum(*testing.T) {
 	fmt.Println(maxPathSum(root))
 
 }
+
+func TestLowestCommonAncestor(*testing.T) {
+	var ele = []int{6, 2, 8, 0, 4, 7, 9, null, null, 3, 5}
+	var pe = []int{2}
+	var qe = []int{4}
+	root := MakeTreeByLevelList(ele)
+	p := MakeTreeByLevelList(pe)
+	q := MakeTreeByLevelList(qe)
+	x := lowestCommonAncestor(root, p, q)
+	if x == nil {
+		fmt.Println("empty")
+	} else {
+		fmt.Println(x.Val)
+	}
+}

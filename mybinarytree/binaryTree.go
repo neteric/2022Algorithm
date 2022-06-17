@@ -915,3 +915,43 @@ func helpMaxPathSum(root *TreeNode, maxPathValue *int) int {
 	return int(math.Max(float64(left), float64(right))) + root.Val
 
 }
+
+// number: 235
+var result *TreeNode
+
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+	if root == nil || q == nil || p == nil {
+		return nil
+	}
+	if root.Val == p.Val || root.Val == q.Val {
+		if find(root.Left, p, q) != nil || find(root.Right, p, q) != nil {
+			result = root
+		}
+	} else if find(root.Left, p, q) != nil && find(root.Right, p, q) != nil {
+		result = root
+	}
+	lowestCommonAncestor(root.Left, p, q)
+	lowestCommonAncestor(root.Right, p, q)
+
+	return result
+
+}
+
+func find(root, v1, v2 *TreeNode) *TreeNode {
+
+	if root == nil {
+		return nil
+	}
+	if root.Val == v1.Val || root.Val == v2.Val {
+		return root
+	}
+
+	if left := find(root.Left, v1, v2); left != nil {
+		return left
+	}
+	if right := find(root.Right, v1, v2); right != nil {
+		return right
+	}
+
+	return nil
+}
