@@ -955,3 +955,75 @@ func find(root, v1, v2 *TreeNode) *TreeNode {
 
 	return nil
 }
+
+// number: 107
+func levelOrderBottom(root *TreeNode) [][]int {
+
+	if root == nil {
+		return [][]int{}
+	}
+
+	var result [][]int
+	var q []*TreeNode
+	q = append(q, root)
+
+	for len(q) > 0 {
+
+		// var nextLevel []*TreeNode
+		var sizeQ = len(q)
+		var levelValue []int
+
+		for i := 0; i < sizeQ; i++ {
+			out := q[0]
+			q = q[1:]
+			levelValue = append(levelValue, out.Val)
+			if out.Left != nil {
+				q = append(q, out.Left)
+			}
+			if out.Right != nil {
+				q = append(q, out.Right)
+			}
+		}
+		result = append(result, levelValue)
+
+	}
+	for i, j := 0, len(result)-1; i < j; i, j = i+1, j-1 {
+		result[i], result[j] = result[j], result[i]
+	}
+	return result
+}
+
+// number: 044
+func largestValues(root *TreeNode) []int {
+
+	if root == nil {
+		return []int{}
+	}
+	var result []int
+	var q []*TreeNode
+
+	q = append(q, root)
+	i := 0
+	for len(q) > 0 {
+		sizeq := len(q)
+		// result = append(result, 0)
+		for j := 0; j < sizeq; j++ {
+			out := q[0]
+			q = q[1:]
+			if out.Left != nil {
+				q = append(q, out.Left)
+			}
+			if out.Right != nil {
+				q = append(q, out.Right)
+			}
+			if len(result) < i+1 {
+				result = append(result, out.Val)
+			} else if out.Val > result[i] {
+				result[i] = out.Val
+			}
+		}
+		i++
+	}
+	return result
+
+}

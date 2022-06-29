@@ -185,3 +185,15 @@ func TestLowestCommonAncestor(*testing.T) {
 		fmt.Println(x.Val)
 	}
 }
+
+func TestLevelOrderBottom(*testing.T) {
+	var ele = []int{1, 2, 3, 4, 5, 7, 8}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(levelOrderBottom(root))
+}
+
+func TestLargestValues(*testing.T) {
+	var ele = []int{0, -2}
+	root := MakeTreeByLevelList(ele)
+	fmt.Println(largestValues(root))
+}
